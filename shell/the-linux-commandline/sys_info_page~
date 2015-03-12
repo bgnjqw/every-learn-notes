@@ -1,0 +1,36 @@
+#! /usr/bin/zsh
+
+# Program to output a system information page
+
+TITLE="System information Report For $HOSTNAME"
+
+CURRENT_TIME=$(date)
+
+TIME_STAMP="Generated $CURRENT_TIME, by $USER"
+
+report_uptime () {
+    cat << EOF
+    <H2>System Uptime</H2>
+    <PRE>$(uptime)</PRE>
+EOF
+     return
+}
+
+
+cat << EOF
+
+<HTML>
+    <HEAD>
+          <TITLE>$TITLE</TITLE>
+    </HEAD>
+    <BODY>
+          <H1>$TITLE</H1>
+          <P>$TIME_STAMP</P>
+          $(report_uptime)
+          $(report_disk_space)
+          $(report_home_space)
+    </BODY>
+</HTML>
+
+
+EOF
