@@ -2,3 +2,12 @@
 	java中，线程分为两部分理解，线程+任务，任务在线程里执行
 	1)继承thread,即直接任务写在线程里
 	2)imp runnable或callable，再用thread或excutor执行
+
+	线程的状态
+	初始化-->running-->block,wait,sleep
+                       -->dead
+2.如何停止一个线程
+	1)thread可以条用interrupt方法，发送一个中断信号,暂且理解为异常
+	2)Executor调用shutdownNow()
+3.thread的join方法
+	哪个线程调用，哪个线程就一直直接，直到结束
