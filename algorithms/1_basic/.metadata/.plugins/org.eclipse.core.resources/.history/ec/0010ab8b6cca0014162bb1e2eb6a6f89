@@ -1,0 +1,17 @@
+package _1_bag_queue_stack;
+
+public class FixedCapacityStack<Item> {
+
+	private Item[] a;
+	private int N;
+	
+	public FixedCapacityStack(int cap){
+//		a = new Item[a];  这样是不行的，在java中不能直接初始化范型数组
+		a = (Item[])new Object[cap];
+		this.N = cap;
+	}
+	
+	public boolean isEmpty(){
+		return N == 0;
+	}
+}

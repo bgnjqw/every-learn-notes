@@ -1,0 +1,11 @@
+package util;
+
+public class Util {
+
+	public static void print(Object s){
+		if(s == null){
+			
+		}
+		System.out.println(s.toString());
+	}
+}
