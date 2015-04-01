@@ -2,6 +2,10 @@ package _1_bag_queue_stack;
 
 import util.Util;
 
+/**
+ * 定容栈
+ * @param <Item>
+ */
 public class FixedCapacityStack<Item> {
 
 	private Item[] a;
@@ -26,17 +30,19 @@ public class FixedCapacityStack<Item> {
 		}
 		a[N++] = item;
 	}
-	
+
+    //出栈时，如果栈的体积小与长度的四倍，则变为长度的两倍，这样可以保持永远在1/4以上
 	public Item pop(){
-		Item retult = a[N];
-		a[--N] = null;
-		return retult;
+		Item result = a[--N];
+		a[N] = null;
+        if(N > 0 && N == a.length/4){
+            this.resize(a.length/2);
+        }
+		return result;
 	}
 	
 	public void print(){
-		for(Item item : a){
-			Util.print(item);
-		}
+		Util.printList(this.a);
 	}
 	
 	//将数组长度增加
@@ -55,9 +61,16 @@ public class FixedCapacityStack<Item> {
 		fcs.push("is");
 		fcs.push("a");
 		fcs.push("test");
+        fcs.print();
 		fcs.pop();
 		fcs.print();
+        fcs.pop();
+        fcs.print();
 		Util.print(fcs.size());
-	
+
+        fcs.pop();
+        fcs.pop();
+        Util.print(fcs.size());
+
 	}
 }
